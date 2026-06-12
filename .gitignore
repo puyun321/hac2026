@@ -1,0 +1,21 @@
+# Auto-generated data and results
+data/
+npy_data/
+output/
+training_result/
+simulation/
+prediction/
+
+# Trained model weights
+code/models/*.pth
+code/models/*.pt
+
+# Compiled objects
+*.o
+*.pyc
+*.pyo
+__pycache__/
+code/__pycache__/
+
+# Empty output placeholder
+code/output/
