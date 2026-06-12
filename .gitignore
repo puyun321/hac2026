@@ -1,10 +1,8 @@
 # Auto-generated data and results
 data/
 npy_data/
-output/
-training_result/
-simulation/
-prediction/
+/simulation/
+/prediction/
 
 # Trained model weights
 code/models/*.pth
