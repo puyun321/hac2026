@@ -140,8 +140,8 @@ hac2026/
 │   ├── AsteroidModel07_shape_secret/
 │   ├── AsteroidModel08_shape_secret/
 │   └── AsteroidModel09_shape_secret/
-├── simulation/                  <- intermediate: convexinv outputs (can delete after main.py finishes)
-├── prediction/                  <- intermediate: CNN outputs (can delete after main.py finishes)
+├── simulation/                  <- dev CLI intermediate outputs; auto-moved to training_result/ by main.py
+├── prediction/                  <- dev CLI intermediate outputs; auto-moved to training_result/ by main.py
 ├── output/                      <- final results: all STL files and visualizations are here
 └── code/
     ├── msh_to_npy.py            <- Step 1: preprocess shapes
