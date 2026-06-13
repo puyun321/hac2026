@@ -1,8 +1,6 @@
 # HAC 2026 — Asteroid Shape Reconstruction
 
-Physics-based lightcurve inversion (convexinv) followed by two CNN shape corrections:
-**VoxelCNN** (predicts shape directly from lightcurves) and
-**DeltaCNN** (predicts the additive correction on top of the physics shape).
+Physics-based lightcurve inversion (convexinv) followed by **VoxelCNN** shape prediction.
 
 ---
 
@@ -30,12 +28,9 @@ cd C:\Users\TKU\Desktop\lab\research\hac2026
 python main.py data output
 ```
 
-Output: two STL files per asteroid under `output\Asteroid0X\`:
-- `Asteroid0X.stl` — VoxelCNN prediction
-- `Asteroid0X_delta.stl` — DeltaCNN prediction
+Output: one STL file per asteroid under `output\Asteroid0X\Asteroid0X.stl`.
 
-Both forms handle everything automatically:
-physics simulation (convexinv) → VoxelCNN → DeltaCNN → STL output.
+Pipeline runs automatically: physics simulation (convexinv) → VoxelCNN → STL output.
 
 Use `--jobs N` to control parallel workers (defaults to your CPU count):
 
@@ -47,7 +42,7 @@ python main.py data output --jobs 4
 
 ### Scenario B: Training from scratch
 
-No model yet, or you want to retrain. Run the five steps below in order:
+No model yet, or you want to retrain. Run the four steps below in order:
 
 ```cmd
 cd C:\Users\TKU\Desktop\lab\research\hac2026\code
@@ -61,21 +56,16 @@ python convexinv_pipeline.py 1 2 3
 REM Step 3: Train VoxelCNN
 python CNN.py train
 
-REM Step 4: Train DeltaCNN
-python CNN_delta.py train
-
-REM Step 5: Run prediction
+REM Step 4: Run prediction
 cd ..
 python main.py data\AsteroidModel04_shape_secret output
 ```
 
-Alternatively, use the one-shot script which skips steps that are already done
-(note: `run_dev.py` does **not** train DeltaCNN — run Step 4 manually if needed):
+Alternatively, use the one-shot script which skips steps that are already done:
 
 ```cmd
 cd C:\Users\TKU\Desktop\lab\research\hac2026\code
 python run_dev.py
-python CNN_delta.py train
 ```
 
 ---
@@ -94,13 +84,6 @@ python convexinv_pipeline.py 1 2 3
 ```cmd
 cd C:\Users\TKU\Desktop\lab\research\hac2026\code
 python CNN.py train
-```
-
-### Train DeltaCNN only
-
-```cmd
-cd C:\Users\TKU\Desktop\lab\research\hac2026\code
-python CNN_delta.py train
 ```
 
 ### VoxelCNN prediction only (model must exist)
@@ -143,20 +126,19 @@ hac2026/
 ├── simulation/                  <- dev CLI intermediate outputs; auto-moved to training_result/ by main.py
 ├── prediction/                  <- dev CLI intermediate outputs; auto-moved to training_result/ by main.py
 ├── output/                      <- final results: all STL files and visualizations are here
+├── convexinv_suite/             <- convexinv, lcgenerator, conjgradinv source and executables
 └── code/
     ├── msh_to_npy.py            <- Step 1: preprocess shapes
     ├── convexinv_pipeline.py    <- Step 2: physics simulation
     ├── CNN.py                   <- Step 3: train and predict VoxelCNN
-    ├── CNN_delta.py             <- Step 4: train and predict DeltaCNN
     ├── run_dev.py               <- one-shot pipeline (runs all missing steps)
-    ├── full_pipeline.py         <- physics + VoxelCNN + DeltaCNN combined pipeline
+    ├── full_pipeline.py         <- physics + VoxelCNN combined pipeline
     ├── shape_to_mesh.py
     ├── train_config.py          <- hyperparameters, data catalog, utility functions
     ├── run_convexinv.py
     ├── generate_predicted_lc.py
     └── models/
-        ├── cnn_shape_model.pth  <- VoxelCNN model (created after Step 3)
-        └── delta_shape_model.pth <- DeltaCNN model (created after Step 4)
+        └── cnn_shape_model.pth  <- VoxelCNN model (created after Step 3)
 ```
 
 ---
@@ -212,13 +194,10 @@ All outputs are written under `output/Asteroid0X/`.
 | File | Description |
 |------|-------------|
 | `Asteroid0X.stl` | VoxelCNN final submission STL |
-| `Asteroid0X_delta.stl` | DeltaCNN final submission STL |
 | `simulation/asteroid.obj` | Physics mesh from convexinv |
 | `simulation/predicted_lightcurve.txt` | Forward-simulated lightcurve |
 | `prediction/cnn_asteroid.stl` | VoxelCNN corrected shape |
 | `prediction/cnn_shape_comparison.html` | Interactive 3D comparison: Physics vs VoxelCNN |
-| `prediction/delta_asteroid.stl` | DeltaCNN corrected shape |
-| `prediction/delta_shape_comparison.html` | Interactive 2×2 comparison: Physics / VoxelCNN / DeltaCNN / True Shape (with RMSE) |
 
 ---
 
@@ -237,6 +216,6 @@ All outputs are written under `output/Asteroid0X/`.
 
 **GPU:** NVIDIA GeForce RTX 5090 (CUDA 12.8)
 
-**Executables** (included under `version_0.2.1/`):
+**Executables** (included under `convexinv_suite/`):
 - `convexinv/convexinv.exe`
 - `lcgenerator/lcgenerator.exe`
