@@ -5,7 +5,7 @@ import numpy as np
 from pathlib import Path
 
 LCGEN_EXE = Path(r"C:\Users\TKU\Desktop\lab\research\hac2026"
-                 r"\version_0.2.1\lcgenerator\lcgenerator.exe")
+                 r"\convexinv_suite\lcgenerator\lcgenerator.exe")
 
 
 def read_obj(obj_path):

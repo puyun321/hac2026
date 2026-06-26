@@ -12,10 +12,10 @@ DATA_FILE   = Path(r"C:\Users\TKU\Desktop\lab\research\hac2026\data"
                    r"\Asteroid01_lightcurve_intensity.txt")
 
 PARAMS_FILE = Path(r"C:\Users\TKU\Desktop\lab\research\hac2026"
-                   r"\version_0.2.1\input_convexinv")
+                   r"\convexinv_suite\input_convexinv")
 
 CONVEXINV_EXE = Path(r"C:\Users\TKU\Desktop\lab\research\hac2026"
-                     r"\version_0.2.1\convexinv\convexinv.exe")
+                     r"\convexinv_suite\convexinv\convexinv.exe")
 
 OUTPUT_DIR  = Path(r"C:\Users\TKU\Desktop\lab\research\hac2026\simulation")
 

@@ -52,7 +52,6 @@ import run_convexinv         as rc_mod
 import shape_to_mesh         as s2m_mod
 import generate_predicted_lc as gplc_mod
 import CNN                   as cnn_mod
-import CNN_delta              as cnn_delta_mod
 
 from shape_to_mesh import normalize_mesh
 
@@ -182,50 +181,6 @@ def run_cnn(sim_dir, lc_obs_path, pred_dir, stl_path=None):
     return True
 
 
-def run_cnn_delta(sim_dir, lc_obs_path, pred_dir, stl_path=None):
-    sim_dir  = Path(sim_dir)
-    pred_dir = Path(pred_dir)
-
-    sep = "=" * 62
-    print(f"\n{sep}")
-    print(f"  CNN-delta  {sim_dir.parent.name}")
-    print(f"             sim  : {sim_dir}")
-    print(f"             pred : {pred_dir}")
-    print(sep)
-
-    if not Path(cnn_delta_mod.model_path).exists():
-        print(f"  delta model not found: {cnn_delta_mod.model_path}")
-        print("  run  python CNN_delta.py train  first")
-        return False
-
-    obj_path  = sim_dir / "asteroid.obj"
-    pred_path = sim_dir / "predicted_lightcurve.txt"
-    if not obj_path.exists() or not pred_path.exists():
-        print(f"  physics outputs missing in {sim_dir}")
-        return False
-
-    stl_out = cnn_delta_mod.predict(
-        sim_dir=sim_dir,
-        model_path=cnn_delta_mod.model_path,
-        out_dir=pred_dir,
-        lc_obs_path=lc_obs_path,
-    )
-    if stl_out is None:
-        return False
-
-    if stl_path is not None:
-        if Path(stl_out).exists():
-            Path(stl_path).parent.mkdir(parents=True, exist_ok=True)
-            shutil.copy2(stl_out, stl_path)
-            print(f"  STL  -> {stl_path}")
-        else:
-            print(f"  delta STL not found at {stl_out}")
-            return False
-
-    print(f"\n  CNN-delta done  →  {pred_dir}")
-    return True
-
-
 # ---------------------------------------------------------------------------
 # Evaluation entry point
 # ---------------------------------------------------------------------------
@@ -246,13 +201,12 @@ def run(input_dir, output_dir, jobs=None):
         ast_id  = _ast_id_from_lc(lc_file)
         ast_dir = output_dir / f"Asteroid{ast_id}"
         tasks.append({
-            "id":        ast_id,
-            "lc_file":   lc_file,
-            "lc_bin":    entry["lc_binary"],
-            "sim_dir":   ast_dir / "simulation",
-            "pred_dir":  ast_dir / "prediction",
-            "stl":       ast_dir / f"Asteroid{ast_id}.stl",
-            "delta_stl": ast_dir / f"Asteroid{ast_id}_delta.stl",
+            "id":      ast_id,
+            "lc_file": lc_file,
+            "lc_bin":  entry["lc_binary"],
+            "sim_dir": ast_dir / "simulation",
+            "pred_dir": ast_dir / "prediction",
+            "stl":     ast_dir / f"Asteroid{ast_id}.stl",
         })
 
     # --- Phase 1: physics — run all asteroids in parallel ---
@@ -284,23 +238,10 @@ def run(input_dir, output_dir, jobs=None):
             cnn_ok = run_cnn(t["sim_dir"], t["lc_file"], t["pred_dir"],
                              stl_path=t["stl"])
         results.append({
-            "id":        t["id"],
-            "stl":       t["stl"],
-            "delta_stl": t["delta_stl"],
-            "success":   physics_ok.get(t["id"], False) and cnn_ok,
-            "delta_ok":  False,
+            "id":      t["id"],
+            "stl":     t["stl"],
+            "success": physics_ok.get(t["id"], False) and cnn_ok,
         })
-
-    # --- Phase 3: CNN-delta — sequential (GPU memory) ---
-    print(f"\n{'#'*62}")
-    print(f"  Phase 3: CNN-delta correction")
-    print(f"{'#'*62}")
-
-    for t, r in zip(tasks, results):
-        if r["success"]:
-            delta_ok = run_cnn_delta(t["sim_dir"], t["lc_file"], t["pred_dir"],
-                                     stl_path=t["delta_stl"])
-            r["delta_ok"] = delta_ok
 
     # Move root-level simulation/ and prediction/ (left by the dev CLI) into training_result/
     _BASE = Path(__file__).resolve().parent.parent
@@ -318,14 +259,11 @@ def run(input_dir, output_dir, jobs=None):
     print(f"{'='*62}")
     for r in results:
         tag = "ok" if r["success"] else "FAILED"
-        stl_tag       = "  " if r["stl"].exists()       else "  [missing] "
-        delta_stl_tag = "  " if r["delta_stl"].exists() else "  [missing] "
+        stl_tag = "  " if r["stl"].exists() else "  [missing] "
         print(f"  {tag}  Asteroid{r['id']}")
         print(f"         CNN   {stl_tag}{r['stl']}")
-        print(f"         delta {delta_stl_tag}{r['delta_stl']}")
-    n_ok       = sum(1 for r in results if r["success"])
-    n_delta_ok = sum(1 for r in results if r["delta_ok"])
-    print(f"\n  CNN: {n_ok}/{len(results)}  |  CNN-delta: {n_delta_ok}/{len(results)}")
+    n_ok = sum(1 for r in results if r["success"])
+    print(f"\n  CNN: {n_ok}/{len(results)}")
     print(f"{'='*62}")
 
 
