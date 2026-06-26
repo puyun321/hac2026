@@ -1,17 +1,18 @@
 % This MATLAB script generates approximate asteroid light curves for the 
 % Helsinki Asteroid Challenge 2026 (HAC2026) 
 % The main purpose of this program is to verify the reconstructed asteroid
+% using light curves 
 
 close all
 clear all
 clc
 
 %% Inputs 
-TR = stlread('Asteroid03.stl'); 
-lightcurve_data = readmatrix('Asteroid03_lightcurve_intensity.csv'); 
+filename = 'Asteroid010.stl'; 
+TR = stlread(filename); 
+lightcurve_data = readmatrix('Asteroid010_lightcurve_intensity.csv'); 
 
-tau = 842; % discretization of angles for plotting light curve
-
+tau = size(lightcurve_data,1); % discretization of angles for plotting light curve
 
 
 %% Main program 
@@ -68,30 +69,26 @@ for a=1:7
     S1 = mu0.*mu1; % for first camera 
     S2 = mu0.*mu2; % for second camera 
 
-    % Light intensity 
-    L1(a,k) = (transpose(Area)*S1); 
-    L2(a,k) = (transpose(Area)*S2); 
+    % Binary curve 
+    L1(a,k) = transpose(Area)*S1; 
+    L2(a,k) = transpose(Area)*S2; 
   end 
   L1_normalized(a,:) = L1(a,:)/mean(L1(a,:)); 
   L2_normalized(a,:) = L2(a,:)/mean(L2(a,:)); 
   
-  figure
+  subplot(7,2,2*a-1) 
   plot(direction,L1_normalized(a,:),'b')
   hold on 
   plot(direction,transpose(lightcurve_data(:,4*a-2)),'r') 
   legend('Reconstructed data', 'Original data', 'Location', 'best')
-  title(['first camera, experiment no', num2str(a)])
+  title(['first camera, experiment no ', num2str(a)])
 
-  figure
+  subplot(7,2,2*a) 
   plot(direction,L2_normalized(a,:),'b')
   hold on 
   plot(direction,transpose(lightcurve_data(:,4*a)),'r') 
   legend('Reconstructed data', 'Original data', 'Location', 'best')
-  title(['first camera, experiment no ', num2str(a)]) 
+  title(['second camera, experiment no ', num2str(a)]) 
 end 
 
-
-
-
-
-
+sgtitle(sprintf('Evaluation of %s', filename))
