@@ -52,20 +52,23 @@ def normalize_mesh(verts, cylinder_R=None):
     Normalize vertices to competition coordinates: z ∈ [-1, 1], xy centroid at origin.
 
     Without cylinder_R: uniform scale so z spans [-1, 1].
-    With cylinder_R: scale so z ≈ [-1, 1] first, then uniformly rescale so
-    max_xy = cylinder_R.  The competition guarantees the true shape touches both
-    z=±1 planes AND the cylinder side, so R fixes the xy/z aspect ratio.
+    With cylinder_R: scale z independently to [-1, 1], then scale only xy so
+    max_xy_radius = cylinder_R.  Both constraints are satisfied simultaneously
+    because the competition guarantees the true shape touches both z=±1 planes
+    AND the cylinder wall.
     """
     verts = np.asarray(verts, dtype=np.float64).copy()
     verts[:, 0] -= verts[:, 0].mean()
     verts[:, 1] -= verts[:, 1].mean()
     z_lo, z_hi = verts[:, 2].min(), verts[:, 2].max()
     verts[:, 2] -= (z_lo + z_hi) / 2
-    verts *= 2.0 / (z_hi - z_lo)
+    verts *= 2.0 / (z_hi - z_lo)          # uniform scale: z → [-1, 1]
     if cylinder_R is not None:
         xy_max = float(np.sqrt(verts[:, 0] ** 2 + verts[:, 1] ** 2).max())
         if xy_max > 0:
-            verts *= cylinder_R / xy_max
+            xy_scale = cylinder_R / xy_max
+            verts[:, 0] *= xy_scale        # scale only xy, z stays in [-1, 1]
+            verts[:, 1] *= xy_scale
     return verts
 
 

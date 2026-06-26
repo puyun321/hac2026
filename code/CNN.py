@@ -336,8 +336,14 @@ def predict(sim_dir, model_path=model_path, out_root=pred_dir,
 
     print(f"  {sim_dir.name}: {len(verts)} vertices, {len(faces)} faces")
 
-    ast_id     = sim_dir.name.replace("Asteroid", "").zfill(2)
-    cyl_R      = CYLINDER_RADII.get(ast_id)
+    import re as _re
+    cyl_R = None
+    for part in [sim_dir.name, sim_dir.parent.name]:
+        m = _re.search(r'Asteroid(\d+)', part, _re.IGNORECASE)
+        if m:
+            ast_id = str(int(m.group(1))).zfill(2)
+            cyl_R  = CYLINDER_RADII.get(ast_id)
+            break
     verts_norm = normalize_mesh(verts, cylinder_R=cyl_R)
 
     write_obj(out_dir / "cnn_asteroid.obj", verts_norm, faces)
