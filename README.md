@@ -4,45 +4,15 @@
 > For proper equation rendering, please view this documentation in day mode instead of night mode. 
 
 ## Evaluation 
-Before describing the asteroid reconstruction process, we first introduce the evaluation method for the resulting STL file. An STL file represents a three-dimensional object as a collection of triangular facets, where each facet is specified by its normal vector and the coordinates of its three vertices. For example, if we open the `asteroid1.stl` file provided by the organizers in a text editor, its contents begin as follows: 
-
-```text
-solid Created by Gmsh
-facet normal -0.159289 0.167131 0.972982
-  outer loop
-    vertex -1.888296041844072 0.0002460429996352797 3.161097003616941
-    vertex -1.890329489593098 0.01126283538653845 3.158871721174612
-    vertex -1.90946363000239 0.0006845222986165005 3.157556283277667
-  endloop
-endfacet
-facet normal 0.0283625 -0.328219 0.944176
-  outer loop
-    vertex -0.174033817520803 -1.862797688459199 3.159907628518454
-    vertex -0.1963030849178117 -1.864990084954105 3.159814451667421
-    vertex -0.1809672714359435 -1.879416053890588 3.154338941421392
-  endloop
-endfacet
-facet normal -0.460625 -0.794076 0.39657
-  outer loop
-    vertex -2.445548420936831 -3.041386196190822 0.7772878517318224
-    vertex -2.430985427219417 -3.046417746146632 0.7841281287959293
-    vertex -2.445625154814153 -3.036135406585522 0.7877126970651008
-  endloop
-endfacet
-(etc)
-```
-
-In addition, the asteroids provided by the organizers were produced using a 3D printer and then coated with a uniform color. Therefore, the albedo ![\overline{\omega}](https://latex.codecogs.com/png.image?\dpi{110}\overline{\omega}) is a constant. Let ![\mathbf{n}_{\Delta}](https://latex.codecogs.com/png.image?\dpi{110}\mathbf{n}_{\Delta}) denote the unit normal of the facet ![\triangle](https://latex.codecogs.com/png.image?\dpi{110}\triangle). Let ![\mathbf{E}_{0}](https://latex.codecogs.com/png.image?\dpi{110}\mathbf{E}_{0})  and ![\mathbf{E}](https://latex.codecogs.com/png.image?\dpi{110}\mathbf{E}) represent the directions of the light source and the observer (camera), respectively. The lightcurve can be approximated by 
+Before describing the asteroid reconstruction process, we first introduce the evaluation method for the resulting STL file. An STL file represents a three-dimensional object as a collection of triangular facets, where each facet is specified by its normal vector and the coordinates of its three vertices. In addition, the asteroids provided by the organizers were produced using a 3D printer and then coated with a uniform color. Therefore, the albedo ![\overline{\omega}](https://latex.codecogs.com/png.image?\dpi{110}\overline{\omega}) is a constant. Let ![\mathbf{n}_{\Delta}](https://latex.codecogs.com/png.image?\dpi{110}\mathbf{n}_{\Delta}) denote the unit normal of the facet ![\triangle](https://latex.codecogs.com/png.image?\dpi{110}\triangle). Let ![\mathbf{E}_{0}](https://latex.codecogs.com/png.image?\dpi{110}\mathbf{E}_{0})  and ![\mathbf{E}](https://latex.codecogs.com/png.image?\dpi{110}\mathbf{E}) represent the directions of the light source and the observer (camera), respectively. The lightcurve can be approximated by 
 
 ![L=\overline{\omega}\sum_{\triangle\in\{{\rm%20facet}\}}S(\mu,\mu_{0}){\rm%20area}(\triangle)+O(\overline{\omega}^{2})](https://latex.codecogs.com/png.image?\dpi{110}L=\overline{\omega}\sum_{\triangle\in\{{\rm%20facet}\}}S(\mu,\mu_{0}){\rm%20area}(\triangle)+O(\overline{\omega}&Hat;{2}))
 
 where ![\mu=(\mathbf{E}\cdot\mathbf{n}_{\triangle})_{+}](https://latex.codecogs.com/png.image?\dpi{110}\mu=(\mathbf{E}\cdot\mathbf{n}_{\triangle})_{+}) and ![\mu_{0}=(\mathbf{E}_{0}\cdot\mathbf{n}_{\triangle})_{+}](https://latex.codecogs.com/png.image?\dpi{110}\mu_{0}=(\mathbf{E}_{0}\cdot\mathbf{n}_{\triangle})_{+}). We assume the Lambert law ![S(\mu,\mu_{0})=\mu\mu_{0}](https://latex.codecogs.com/png.image?\dpi{110}S(\mu,\mu_{0})=\mu\mu_{0}). 
 
-The organizers fix the illumination direction to ![\mathbf{E}_{0}=(-1,0,0)](https://latex.codecogs.com/png.image?\dpi{110}\mathbf{E}_{0}=(-1,0,0)). Two cameras are placed at the positions listed in the following tables: 
+The organizers fix the illumination direction to ![\mathbf{E}_{0}=(-1,0,0)](https://latex.codecogs.com/png.image?\dpi{110}\mathbf{E}_{0}=(-1,0,0)). The positions of the two cameras can then be computed using matrix multiplication. This evaluation can be performed in MATLAB by running the script `light_curve_evaluation.m`. 
 
-
-
-TBA 
+---
 
 ## Method 1: Voxelization and Deep Learning-Based Reconstruction 
 
