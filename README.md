@@ -13,6 +13,9 @@ where ![\mu=(\mathbf{E}\cdot\mathbf{n}_{\triangle})_{+}](https://latex.codecogs.
 The organizers fix the illumination direction to ![\mathbf{E}_{0}=(-1,0,0)](https://latex.codecogs.com/png.image?\dpi{110}\mathbf{E}_{0}=(-1,0,0)). The positions of the two cameras can then be computed using matrix multiplication. This evaluation can be performed in MATLAB by running the script `light_curve_evaluation.m`, which output the average light curve ![L/{\rm%20average}(L)](https://latex.codecogs.com/png.image?\dpi{110}L/{\rm%20average}(L)) of the object. 
 
 > [!NOTE] 
+> The input light curve must be provided in `.csv` format. The `.txt` files supplied by the organizers can be easily converted to this format.
+
+> [!NOTE] 
 > In principle, this can also be accomplished using the `lcgenerator` module, which is available from the [Database of Asteroid Models from Inversion Techniques (DAMIT)](https://damit.cuni.cz/projects/damit/pages/software_download). We will provide the appropriate references in a later section. We developed our own implementation to ensure that it is fully compatible with the organizers' experimental setup.
 
 ---
