@@ -10,7 +10,7 @@ Before describing the asteroid reconstruction process, we first explain the mech
 
 where ![\mu=(\mathbf{E}\cdot\mathbf{n}_{\triangle})_{+}](https://latex.codecogs.com/png.image?\dpi{110}\mu=(\mathbf{E}\cdot\mathbf{n}_{\triangle})_{+}) and ![\mu_{0}=(\mathbf{E}_{0}\cdot\mathbf{n}_{\triangle})_{+}](https://latex.codecogs.com/png.image?\dpi{110}\mu_{0}=(\mathbf{E}_{0}\cdot\mathbf{n}_{\triangle})_{+}). We assume the Lambert law ![S(\mu,\mu_{0})=\mu\mu_{0}](https://latex.codecogs.com/png.image?\dpi{110}S(\mu,\mu_{0})=\mu\mu_{0}). 
 
-The organizers fix the illumination direction to ![\mathbf{E}_{0}=(-1,0,0)](https://latex.codecogs.com/png.image?\dpi{110}\mathbf{E}_{0}=(-1,0,0)). The positions of the two cameras can then be computed using matrix multiplication. This evaluation can be performed in MATLAB by running the script `light_curve_evaluation.m`. 
+The organizers fix the illumination direction to ![\mathbf{E}_{0}=(-1,0,0)](https://latex.codecogs.com/png.image?\dpi{110}\mathbf{E}_{0}=(-1,0,0)). The positions of the two cameras can then be computed using matrix multiplication. This evaluation can be performed in MATLAB by running the script `light_curve_evaluation.m`, which output the average light curve ![L/{\rm%20average}(L)](https://latex.codecogs.com/png.image?\dpi{110}L/{\rm%20average}(L)) of the object. 
 
 ---
 
@@ -91,6 +91,9 @@ Use `--jobs N` to control parallel workers (defaults to your CPU count):
 ```cmd
 python main.py data output --jobs 4
 ```
+> [!WARNING] 
+> To avoid non-uniqueness arising from arbitrary scaling, we rescaled the reconstructed object to fit the bounding cylinder provided by the organizers. 
+
 
 ---
 
