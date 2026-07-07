@@ -32,8 +32,11 @@ endfacet
 (etc)
 ```
 
-In addition, the asteroids provided by the organizers were produced using a 3D printer and then coated with a uniform color. Therefore, the albedo ![\overline{\omega}](https://latex.codecogs.com/png.image?\dpi{110}\overline{\omega}) is a constant. 
+In addition, the asteroids provided by the organizers were produced using a 3D printer and then coated with a uniform color. Therefore, the albedo ![\overline{\omega}](https://latex.codecogs.com/png.image?\dpi{110}\overline{\omega}) is a constant, and the lightcurve can be approximated by 
 
+![L=\overline{\omega}\sum_{\triangle\in\{{\rm%20facet}\}}S(\mu,\mu_{0}){\rm%20area}(\triangle)](https://latex.codecogs.com/png.image?\dpi{110}L=\overline{\omega}\sum_{\triangle\in\{{\rm%20facet}\}}S(\mu,\mu_{0}){\rm%20area}(\triangle))
+
+where ![\mu=(\mathbf{E}\cdot\mathbf{n}_{\triangle})_{+}](https://latex.codecogs.com/png.image?\dpi{110}\mu=(\mathbf{E}\cdot\mathbf{n}_{\triangle})_{+}), ![\mu_{0}=(\mathbf{E}_{0}\cdot\mathbf{n}_{\triangle})_{+}](https://latex.codecogs.com/png.image?\dpi{110}\mu_{0}=(\mathbf{E}_{0}\cdot\mathbf{n}_{\triangle})_{+}) and ![\mathbf{n}_{\Delta}](https://latex.codecogs.com/png.image?\dpi{110}\mathbf{n}_{\Delta}) is the unit normal of the facet ![\triangle](https://latex.codecogs.com/png.image?\dpi{110}\triangle). 
 
 TBA 
 
