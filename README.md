@@ -7,6 +7,27 @@ TBA
 
 ## Method 1: Voxelization and Deep Learning-Based Reconstruction 
 
+### Requirements
+
+| Package | Version used |
+|---------|-------------|
+| Python | 3.14.3 |
+| torch (CUDA 12.8) | 2.11.0+cu128 |
+| numpy | 2.4.4 |
+| scipy | 1.17.1 |
+| matplotlib | 3.10.8 |
+| plotly | 6.7.0 |
+| trimesh | 4.12.2 |
+| scikit-image | 0.26.0 |
+
+**GPU:** NVIDIA GeForce RTX 5090 (CUDA 12.8)
+
+**Executables** (included under `convexinv_suite/`):
+- `convexinv/convexinv.exe`
+- `lcgenerator/lcgenerator.exe`
+
+---
+
 ### Execution of the model 
 
 Before running the code, please update the directory paths in all `.py` files under the `code` folder according to your local environment. The current configuration points to:
@@ -121,24 +142,3 @@ All outputs are written under `output/Asteroid0X/`.
 | `simulation/predicted_lightcurve.txt` | Forward-simulated lightcurve |
 | `prediction/cnn_asteroid.stl` | VoxelCNN corrected shape |
 | `prediction/cnn_shape_comparison.html` | Interactive 3D comparison: Physics vs VoxelCNN |
-
----
-
-## Requirements
-
-| Package | Version used |
-|---------|-------------|
-| Python | 3.14.3 |
-| torch (CUDA 12.8) | 2.11.0+cu128 |
-| numpy | 2.4.4 |
-| scipy | 1.17.1 |
-| matplotlib | 3.10.8 |
-| plotly | 6.7.0 |
-| trimesh | 4.12.2 |
-| scikit-image | 0.26.0 |
-
-**GPU:** NVIDIA GeForce RTX 5090 (CUDA 12.8)
-
-**Executables** (included under `convexinv_suite/`):
-- `convexinv/convexinv.exe`
-- `lcgenerator/lcgenerator.exe`
