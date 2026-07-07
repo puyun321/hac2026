@@ -83,8 +83,6 @@ Use `--jobs N` to control parallel workers (defaults to your CPU count):
 python main.py data output --jobs 4
 ```
 
-Output: one STL file per asteroid under `output\Asteroid0X\Asteroid0X.stl`. 
-
 ---
 
 ### Model Architecture 
