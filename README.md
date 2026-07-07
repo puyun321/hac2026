@@ -1,5 +1,60 @@
 # HAC 2026 — Asteroid Shape Reconstruction
 
+## Evaluation 
+Before describing the asteroid reconstruction process, we first introduce the evaluation method for the resulting STL file. 
+
+TBA 
+
+## Method 1: Voxelization and Deep Learning-Based Reconstruction 
+
+### Description of the Model 
+
+Before running the code, please update the directory paths in all `.py` files under the `code` folder according to your local environment. The current configuration points to:
+
+```text
+C:\Users\TKU\Desktop\lab\research\hac2026\code
+```
+
+First, we convert the reference `.msh` shapes into `.npy` voxel grids. This can be performed execute the `msh_to_npy.py` script located in the `code` folder. 
+
+Rather than training the model using only the voxelized data and the light curve, we additionally include the convex hull as an input. The convex hull can be approximated using the software provided by the Database of Asteroid Models from Inversion Techniques (DAMIT) https://damit.cuni.cz/projects/damit/pages/software_download . This software was originally developed in Fortran by Mikko Kaasalainen and later translated into C by Josef Ďurech. Specifically, we use the `convexinv` module, which is based on the following references:
+
+- Kaasalainen, J., Torppa, J. "Optimization Methods for Asteroid Lightcurve Inversion: I. Shape Determination". 2001. Icarus 153, 24-36.
+- Kaasalainen, J., Torppa, J., Muinonen, K., "Optimization Methods for Asteroid Lightcurve Inversion: II. The Complete Inverse Problem". 2001. Icarus 153, 37-51.
+- Kaasalainen, M., Mottola, S. Fulchignoni, M., "Asteroid Models from Disk-integrated Data" in Asteroids III. 2002, 139-150.
+- Kaasalainen, M., Durech, J., "Inverse Problems of NEO Photometry: Imaging the NEO Population", Proceedings IAU Symposium No. 236, in press.
+
+For convenience, we have packaged the C programs into an `.exe` file, which can be found in the `convexinv_suite/convexinv` folder. If you prefer to execute the program through Python, we have also prepared `convexinv_pipeline.py`, which can be run using the following command:
+
+```cmd
+REM Run convexinv for Asteroid 01, 02, 03
+python convexinv_pipeline.py 1 2 3
+```
+
+We are now ready to train the model by running the following program:
+
+```cmd
+Train VoxelCNN
+python CNN.py train
+```
+
+After training the model, we can proceed with the prediction, and the results will appear in the `output` folder: 
+
+```cmd
+REM Prediction
+cd ..
+python main.py data\AsteroidModel04_shape_secret output
+```
+
+Alternatively, use the one-shot script which skips steps that are already done:
+
+```cmd
+python run_dev.py
+```
+
+---
+
+
 Physics-based lightcurve inversion (convexinv) followed by **VoxelCNN** shape prediction.
 
 ---
@@ -40,35 +95,6 @@ python main.py data output --jobs 4
 
 ---
 
-### Scenario B: Training from scratch
-
-No model yet, or you want to retrain. Run the four steps below in order:
-
-```cmd
-cd C:\Users\TKU\Desktop\lab\research\hac2026\code
-
-REM Step 1: Convert reference .msh shapes to .npy voxel grids (run once)
-python msh_to_npy.py
-
-REM Step 2: Run physics simulation for Asteroid 01, 02, 03
-python convexinv_pipeline.py 1 2 3
-
-REM Step 3: Train VoxelCNN
-python CNN.py train
-
-REM Step 4: Run prediction
-cd ..
-python main.py data\AsteroidModel04_shape_secret output
-```
-
-Alternatively, use the one-shot script which skips steps that are already done:
-
-```cmd
-cd C:\Users\TKU\Desktop\lab\research\hac2026\code
-python run_dev.py
-```
-
----
 
 ## Other useful commands
 
