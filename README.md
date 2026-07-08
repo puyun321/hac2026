@@ -174,3 +174,13 @@ All outputs are written under `output/Asteroid0X/`.
 <img width="2527" height="1314" alt="evaluation_Asteroid09" src="https://github.com/user-attachments/assets/fd906973-2276-4cae-9b05-d1cdc4bd0ac7" />
 <img width="2527" height="1314" alt="evaluation_Asteroid010" src="https://github.com/user-attachments/assets/4d4fc157-4538-4b18-83f8-62f5207c8890" />
 
+--- 
+
+## Method 2: ConvexInv with Manual Scaling 
+
+It is difficult to determine whether the voxelized objects have been reconstructed correctly. At least, Asteroids 5, 7, 8, and 9 still appear to have a chance of being reconstructed successfully. We also wonder whether Asteroids 4-10 are convex. If so, it would likely be preferable to reconstruct them using an existing convex inversion method, such as ConvexInv, as mentioned above. However, even if the asteroid is convex, the reconstruction is unique only up to translation, rotation, and scaling, since we consider only the average light curve. Therefore, these transformations must be determined and applied manually.
+
+
+
+
+
