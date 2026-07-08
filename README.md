@@ -1,5 +1,10 @@
 # Helsinki Asteroid Challenge (HAC 2026) — Asteroid Shape Reconstruction
 
+This repository contains the results submitted by the team from Tamkang University, National Chengchi University, and National Taiwan University.
+
+**Team members:** Pu-Yun Kow, Pu-Zhao Kow, and Jenn-Nan Wang.
+
+
 > [!TIP] 
 > For proper equation rendering, please view this documentation in day mode instead of night mode. 
 
