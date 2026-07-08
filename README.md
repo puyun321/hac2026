@@ -1,7 +1,10 @@
-# HAC 2026 — Asteroid Shape Reconstruction
+# Helsinki Asteroid Challenge (HAC 2026) — Asteroid Shape Reconstruction
 
 > [!TIP] 
 > For proper equation rendering, please view this documentation in day mode instead of night mode. 
+
+For the organizers' convenience, we have placed our final reconstruction results (`Asteroid04.stl`, `Asteroid05.stl`, ..., `Asteroid10.stl`) directly in the main directory for evaluation.
+
 
 ## Rendering Light Curves from 3D Objects 
 Before describing the asteroid reconstruction process, we first explain the mechanism for generating light curves from 3D objects represented by STL files. An STL file represents a three-dimensional object as a collection of triangular facets, where each facet is specified by its normal vector and the coordinates of its three vertices. In addition, the asteroids provided by the organizers were produced using a 3D printer and then coated with a uniform color. Therefore, the albedo ![\overline{\omega}](https://latex.codecogs.com/png.image?\dpi{110}\overline{\omega}) is a constant. Let ![\mathbf{n}_{\Delta}](https://latex.codecogs.com/png.image?\dpi{110}\mathbf{n}_{\Delta}) denote the unit normal of the facet ![\triangle](https://latex.codecogs.com/png.image?\dpi{110}\triangle). Let ![\mathbf{E}_{0}](https://latex.codecogs.com/png.image?\dpi{110}\mathbf{E}_{0})  and ![\mathbf{E}](https://latex.codecogs.com/png.image?\dpi{110}\mathbf{E}) represent the directions of the light source and the observer (camera), respectively. The lightcurve can be approximated by 
@@ -182,6 +185,12 @@ It is difficult to determine whether the voxelized objects have been reconstruct
 
 > [!NOTE] 
 > The output of ConvexInv is provided in the `.obj` format, which can be readily converted to the `.stl` format using [Blender](https://www.blender.org/). 
+
+### Asteroid04 
+
+The MATLAB code is available in `scaling_manually/asteroid04_convex`. The resulting reconstruction appears to be in good agreement with the target object (compare to Method 1):
+
+<img width="2527" height="1314" alt="Asteroid04_evaluation" src="https://github.com/user-attachments/assets/44df390f-6530-4ba0-96d5-a1c04c2dfcb7" />
 
 
 
