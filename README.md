@@ -21,6 +21,13 @@ The organizers fix the illumination direction to ![\mathbf{E}_{0}=(-1,0,0)](http
 > [!NOTE] 
 > In principle, this can also be accomplished using the `lcgenerator` module, which is available from the [Database of Asteroid Models from Inversion Techniques (DAMIT)](https://damit.cuni.cz/projects/damit/pages/software_download). We will provide the appropriate references in a later section. We developed our own implementation to ensure that it is fully compatible with the organizers' experimental setup.
 
+We also perform a consistency check to ensure that the rendered light curve is reasonably close to the measured one: 
+
+<img width="2527" height="1314" alt="verification_asteroid1" src="https://github.com/user-attachments/assets/01852384-c6c3-49ae-a21f-f9eada0ffdc4" />
+<img width="2527" height="1314" alt="verification_asteroid2" src="https://github.com/user-attachments/assets/ea918be7-a4f2-440a-88b9-e01ed7473338" />
+<img width="2527" height="1314" alt="verification_asteroid3" src="https://github.com/user-attachments/assets/c5a33214-a256-48b3-8874-10d300d8ef88" />
+
+
 ---
 
 ## Method 1: Voxelization and Deep Learning-Based Reconstruction 
