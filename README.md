@@ -44,8 +44,6 @@ The organizers fix the illumination direction to ![\mathbf{E}_{0}=(-1,0,0)](http
 - `convexinv/convexinv.exe`
 - `lcgenerator/lcgenerator.exe`
 
----
-
 ### Execution of the model 
 
 Before running the code, please update the directory paths in all `.py` files under the `code` folder according to your local environment. The current configuration points to:
@@ -104,8 +102,6 @@ python main.py data output --jobs 4
 > To avoid non-uniqueness arising from arbitrary scaling, we rescaled the reconstructed object to fit the bounding cylinder provided by the organizers. 
 
 
----
-
 ### Model Architecture 
 
 #### Input
@@ -153,7 +149,7 @@ logits (32×32×16)
   → STL output
 ```
 
----
+
 
 ### Output Files
 
@@ -179,19 +175,22 @@ All outputs are written under `output/Asteroid0X/`.
 
 --- 
 
-## Method 2: ConvexInv with Manual Scaling 
+## Method 2: Heuristic guessing 
 
-It is difficult to determine whether the voxelized objects have been reconstructed correctly. At least, Asteroids 5, 7, 8, and 9 still appear to have a chance of being reconstructed successfully. We also wonder whether Asteroids 4-10 are convex. If so, it would likely be preferable to reconstruct them using an existing convex inversion method, such as ConvexInv, as mentioned above. However, even if the asteroid is convex, the reconstruction is unique only up to translation, rotation, and scaling, since we consider only the average light curve. Therefore, these transformations must be determined and applied manually. Fortunately, inspection of the ConvexInv output in [Blender](https://www.blender.org/) suggests that the reconstructed object is already properly centered. Therefore, only the rotation and scaling need to be determined manually.
+It is difficult to determine whether the voxelized objects have been reconstructed correctly. At least, Asteroids 5, 7, 8, and 9 still appear to have a chance of being reconstructed successfully. 
 
 > [!NOTE] 
 > The output of ConvexInv is provided in the `.obj` format, which can be readily converted to the `.stl` format using [Blender](https://www.blender.org/). 
 
-### Asteroid04 
+### Asteroid04: ConvexInv with Manual Scaling 
+
+From the light curve, we heuristically infer that Asteroid 4 is convex. it would likely be preferable to reconstruct them using an existing convex inversion method, such as ConvexInv, as mentioned above. However, even if the asteroid is convex, the reconstruction is unique only up to translation, rotation, and scaling, since we consider only the average light curve. Therefore, these transformations must be determined and applied manually. Fortunately, inspection of the ConvexInv output in [Blender](https://www.blender.org/) suggests that the reconstructed object is already properly centered. Therefore, only the rotation and scaling need to be determined manually.
 
 The MATLAB code is available in `scaling_manually/asteroid04_convex`. The resulting reconstruction appears to be in good agreement with the target object (compare to Method 1):
 
 <img width="2527" height="1314" alt="Asteroid04_evaluation" src="https://github.com/user-attachments/assets/44df390f-6530-4ba0-96d5-a1c04c2dfcb7" />
 
+### Asteroid06: Comparison of light curve 
 
-
+The light curve and the parameters of the bounding cylinder for Asteroid 6 are remarkably similar to those of Asteroid 3. We therefore hypothesize that Asteroid 6 can be obtained from Asteroid 3 through a rotation and a scaling transformation.
 
