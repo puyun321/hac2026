@@ -197,7 +197,7 @@ The MATLAB code is available in `scaling_manually/asteroid04_convex`. The result
 
 <img width="2527" height="1314" alt="Asteroid04_evaluation" src="https://github.com/user-attachments/assets/44df390f-6530-4ba0-96d5-a1c04c2dfcb7" />
 
-### Asteroid010: a bit luck with Manual Scaling 
+### Asteroid010: A Successful Guess with Manual Scaling
 
 From the light curve and the cylinder base provided by the organizers, it seemed likely that the object had a long and thin shape. With a bit of luck (and some Googling), we found that Asteroid [216Kleopatra](https://damit.cuni.cz/projects/damit/asteroid_models/view/1826) matched our guess. After applying an appropriate scaling, the result appears to be consistent with our guess. The MATLAB code is available in `scaling_manually/asteroid010_luck`. The resulting reconstruction appears to be in good agreement with the target object (compare to Method 1): 
 
