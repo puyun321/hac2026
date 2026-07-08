@@ -133,6 +133,12 @@ max-pooled down to **32 × 32 × 16** to match the model output.
 Loss function: **BCEWithLogitsLoss**.
 Augmentation: 72 cyclic phase shifts per asteroid, with matching voxel Z-rotations.
 
+#### Evaluation training
+
+<img width="2527" height="1314" alt="evaluation_Asteroid01" src="https://github.com/user-attachments/assets/787b2a9f-2d2c-4da2-94e8-c97fc7b98537" />
+<img width="2527" height="1314" alt="evaluation_Asteroid02" src="https://github.com/user-attachments/assets/56493b5b-941f-499a-a131-36494a567341" />
+<img width="2527" height="1314" alt="evaluation_Asteroid03" src="https://github.com/user-attachments/assets/90cdc6d9-6645-4528-8ec4-2ff02a9635b6" />
+
 #### Post-processing (prediction)
 
 ```
@@ -157,3 +163,14 @@ All outputs are written under `output/Asteroid0X/`.
 | `simulation/predicted_lightcurve.txt` | Forward-simulated lightcurve |
 | `prediction/cnn_asteroid.stl` | VoxelCNN corrected shape |
 | `prediction/cnn_shape_comparison.html` | Interactive 3D comparison: Physics vs VoxelCNN |
+
+#### Evaluation output 
+
+<img width="2527" height="1314" alt="evaluation_Asteroid04" src="https://github.com/user-attachments/assets/800d46ea-d564-4b9e-ae2c-3f2037851e6a" />
+<img width="2527" height="1314" alt="evaluation_Asteroid05" src="https://github.com/user-attachments/assets/2ef9ff57-cc46-4f3d-93d2-9baf293fe4d4" />
+<img width="2527" height="1314" alt="evaluation_Asteroid06" src="https://github.com/user-attachments/assets/6cca53f5-6835-4849-a499-564101c72ff0" />
+<img width="2527" height="1314" alt="evaluation_Asteroid07" src="https://github.com/user-attachments/assets/8bb4891c-361e-4edb-bb86-5a00685a92f5" />
+<img width="2527" height="1314" alt="evaluation_Asteroid08" src="https://github.com/user-attachments/assets/6478358a-5abf-4161-b96b-de0b782eb519" />
+<img width="2527" height="1314" alt="evaluation_Asteroid09" src="https://github.com/user-attachments/assets/fd906973-2276-4cae-9b05-d1cdc4bd0ac7" />
+<img width="2527" height="1314" alt="evaluation_Asteroid010" src="https://github.com/user-attachments/assets/4d4fc157-4538-4b18-83f8-62f5207c8890" />
+
