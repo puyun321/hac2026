@@ -191,16 +191,24 @@ It is difficult to determine whether the voxelized objects have been reconstruct
 
 ### Asteroid04: ConvexInv with Manual Scaling 
 
-From the light curve, we heuristically infer that Asteroid 4 is convex. it would likely be preferable to reconstruct them using an existing convex inversion method, such as ConvexInv, as mentioned above. However, even if the asteroid is convex, the reconstruction is unique only up to translation, rotation, and scaling, since we consider only the average light curve. Therefore, these transformations must be determined and applied manually. Fortunately, inspection of the ConvexInv output in [Blender](https://www.blender.org/) suggests that the reconstructed object is already properly centered. Therefore, only the rotation and scaling need to be determined manually.
+From the light curve, we heuristically infer that Asteroid 4 is convex, it would likely be preferable to reconstruct them using an existing convex inversion method, such as ConvexInv, as mentioned above. However, even if the asteroid is convex, the reconstruction is unique only up to translation, rotation, and scaling, since we consider only the average light curve. Therefore, these transformations must be determined and applied manually. Fortunately, inspection of the ConvexInv output in [Blender](https://www.blender.org/) suggests that the reconstructed object is already properly centered. Therefore, only the rotation and scaling need to be determined manually.
 
-The MATLAB code is available in `scaling_manually/asteroid04_convex`. The resulting reconstruction appears to be in good agreement with the target object (compare to Method 1):
+The MATLAB code is available in `scaling_manually/asteroid04_convex`. The resulting reconstruction appears to be in good agreement with the target object (compare to Method 1): 
 
 <img width="2527" height="1314" alt="Asteroid04_evaluation" src="https://github.com/user-attachments/assets/44df390f-6530-4ba0-96d5-a1c04c2dfcb7" />
+
+### Asteroid010: a bit luck with Manual Scaling 
+
+From the light curve and the cylinder base provided by the organizers, it seemed likely that the object had a long and thin shape. With a bit of luck (and some Googling), we found that Asteroid [216Kleopatra](https://damit.cuni.cz/projects/damit/asteroid_models/view/1826) matched our guess. After applying an appropriate scaling, the result appears to be consistent with our guess. The MATLAB code is available in `scaling_manually/asteroid010_luck`. The resulting reconstruction appears to be in good agreement with the target object (compare to Method 1): 
+
+<img width="2527" height="1314" alt="Asteroid010_evaluation" src="https://github.com/user-attachments/assets/c92eb578-999f-40f0-a34c-8b871d5debe0" />
+
+
 
 --- 
 
 ## Future work 
 
-At present, our reconstructions of Asteroids 6 and 10 are not yet entirely convincing. We hope to improve them in future work.
+At present, our reconstructions of Asteroid 6 is not yet entirely convincing. We hope to improve them in future work.
 
 
