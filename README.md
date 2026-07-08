@@ -197,7 +197,10 @@ The MATLAB code is available in `scaling_manually/asteroid04_convex`. The result
 
 <img width="2527" height="1314" alt="Asteroid04_evaluation" src="https://github.com/user-attachments/assets/44df390f-6530-4ba0-96d5-a1c04c2dfcb7" />
 
-### Asteroid06: Comparison of light curve 
+--- 
 
-The light curve and the parameters of the bounding cylinder for Asteroid 6 are remarkably similar to those of Asteroid 3. We therefore hypothesize that Asteroid 6 can be obtained from Asteroid 3 through a rotation and a scaling transformation.
+## Future work 
+
+At present, our reconstructions of Asteroids 6 and 10 are not yet entirely convincing. We hope to improve them in future work.
+
 
