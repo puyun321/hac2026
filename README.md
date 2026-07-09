@@ -74,10 +74,10 @@ Rather than training the model using only the voxelized data and the light curve
 
 Specifically, we use the `convexinv` module, which is based on the following references:
 
-- Kaasalainen, J., Torppa, J. "Optimization Methods for Asteroid Lightcurve Inversion: I. Shape Determination". 2001. Icarus 153, 24-36.
-- Kaasalainen, J., Torppa, J., Muinonen, K., "Optimization Methods for Asteroid Lightcurve Inversion: II. The Complete Inverse Problem". 2001. Icarus 153, 37-51.
-- Kaasalainen, M., Mottola, S. Fulchignoni, M., "Asteroid Models from Disk-integrated Data" in Asteroids III. 2002, 139-150.
-- Kaasalainen, M., Durech, J., "Inverse Problems of NEO Photometry: Imaging the NEO Population", Proceedings IAU Symposium No. 236, in press.
+- Kaasalainen, M., Torppa, J. "Optimization Methods for Asteroid Lightcurve Inversion: I. Shape Determination". 2001. Icarus 153, 24-36, [doi:10.1006/icar.2001.6673](https://doi.org/10.1006/icar.2001.6673)
+- Kaasalainen, M., Torppa, J., Muinonen, K., "Optimization Methods for Asteroid Lightcurve Inversion: II. The Complete Inverse Problem". 2001. Icarus 153, 37-51, [doi:10.1006/icar.2001.6674](https://doi.org/10.1006/icar.2001.6674)
+- Kaasalainen, M., Mottola, S. Fulchignoni, M., "Asteroid Models from Disk-integrated Data" in Asteroids III. 2002, 139-150, [doi:10.2307/j.ctv1v7zdn4](https://doi.org/10.2307/j.ctv1v7zdn4)
+- Kaasalainen, M., Durech, J., "Inverse Problems of NEO Photometry: Imaging the NEO Population", Proceedings IAU Symposium No. 236, in press, [doi:10.1017/S1743921307003195](https://doi.org/10.1017/S1743921307003195)
 
 For convenience, we have packaged the C programs into an `.exe` file, which can be found in the `convexinv_suite/convexinv` folder. If you prefer to execute the program through Python, we have also prepared `convexinv_pipeline.py`, which can be run using the following command:
 
