@@ -70,14 +70,14 @@ First, we convert the reference `.msh` shapes into `.npy` voxel grids. This can 
 
 Rather than training the model using only the voxelized data and the light curve, we additionally include the convex hull as an input. The convex hull can be approximated using the software provided by the [Database of Asteroid Models from Inversion Techniques (DAMIT)](https://damit.cuni.cz/projects/damit/pages/software_download), see also the following paper: 
 
-- Ďurech et al. (2010), DAMIT: a database of asteroid models, A&A, 513, A46 (ADS: [2010A&A...513A..46D](https://ui.adsabs.harvard.edu/abs/2010A%26A...513A..46D), preprint: [PDF 1.4 MiB](https://damit.cuni.cz/projects/damit/files/durech_et_at_2010_damit_preprint.pdf)) 
+- J. Durech, V. Sidorin and M. Kaasalainen, "DAMIT: a database of asteroid models". 2010, A&A 513, Article Number A46, 13 pages, [doi:10.1051/0004-6361/200912693](https://doi.org/10.1051/0004-6361/200912693)
 
 Specifically, we use the `convexinv` module, which is based on the following references:
 
-- Kaasalainen, M., Torppa, J. "Optimization Methods for Asteroid Lightcurve Inversion: I. Shape Determination". 2001. Icarus 153, 24-36, [doi:10.1006/icar.2001.6673](https://doi.org/10.1006/icar.2001.6673)
-- Kaasalainen, M., Torppa, J., Muinonen, K., "Optimization Methods for Asteroid Lightcurve Inversion: II. The Complete Inverse Problem". 2001. Icarus 153, 37-51, [doi:10.1006/icar.2001.6674](https://doi.org/10.1006/icar.2001.6674)
-- Kaasalainen, M., Mottola, S. Fulchignoni, M., "Asteroid Models from Disk-integrated Data" in Asteroids III. 2002, 139-150, [doi:10.2307/j.ctv1v7zdn4](https://doi.org/10.2307/j.ctv1v7zdn4)
-- Kaasalainen, M., Durech, J., "Inverse Problems of NEO Photometry: Imaging the NEO Population", Proceedings IAU Symposium No. 236, in press, [doi:10.1017/S1743921307003195](https://doi.org/10.1017/S1743921307003195)
+- M. Kaasalainen and J. Torppa, "Optimization Methods for Asteroid Lightcurve Inversion: I. Shape Determination". 2001. Icarus 153, 24-36, [doi:10.1006/icar.2001.6673](https://doi.org/10.1006/icar.2001.6673)
+- M. Kaasalainen, J. Torppa and K. Muinonen, "Optimization Methods for Asteroid Lightcurve Inversion: II. The Complete Inverse Problem". 2001. Icarus 153, 37-51, [doi:10.1006/icar.2001.6674](https://doi.org/10.1006/icar.2001.6674)
+- M. Kaasalainen, S. Mottola and M. Fulchignoni, "Asteroid Models from Disk-integrated Data" in Asteroids III. 2002, 139-150, [doi:10.2307/j.ctv1v7zdn4](https://doi.org/10.2307/j.ctv1v7zdn4)
+- M. Kaasalainen and J. Durech, "Inverse Problems of NEO Photometry: Imaging the NEO Population". 2006, Proceedings IAU 2, Symposium S236, 151-166, [doi:10.1017/S1743921307003195](https://doi.org/10.1017/S1743921307003195)
 
 For convenience, we have packaged the C programs into an `.exe` file, which can be found in the `convexinv_suite/convexinv` folder. If you prefer to execute the program through Python, we have also prepared `convexinv_pipeline.py`, which can be run using the following command:
 
