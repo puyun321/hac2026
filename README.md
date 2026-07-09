@@ -186,7 +186,7 @@ It is difficult to determine whether the voxelized objects have been reconstruct
 
 ### Asteroid04: ConvexInv with Manual Scaling 
 
-From the light curve, we heuristically infer that Asteroid 4 is convex, it would likely be preferable to reconstruct them using an existing convex inversion method, such as ConvexInv, as mentioned above. However, even if the asteroid is convex, the reconstruction is unique only up to translation, rotation, and scaling, since we consider only the average light curve. Therefore, these transformations must be determined and applied manually. Fortunately, inspection of the ConvexInv output in [Blender](https://www.blender.org/) suggests that the reconstructed object is already properly centered. Therefore, only the rotation and scaling need to be determined manually.
+The output of the neural network described above suggests that Asteroid 4 may be a convex object, it would likely be preferable to reconstruct them using an existing convex inversion method, such as ConvexInv, as mentioned above. However, even if the asteroid is convex, the reconstruction is unique only up to translation, rotation, and scaling, since we consider only the average light curve. Therefore, these transformations must be determined and applied manually. Fortunately, inspection of the ConvexInv output in [Blender](https://www.blender.org/) suggests that the reconstructed object is already properly centered. Therefore, only the rotation and scaling need to be determined manually.
 
 The MATLAB code is available in `scaling_manually/asteroid04_convex`. The resulting reconstruction appears to be in good agreement with the target object (compare to Method 1): 
 
