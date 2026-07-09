@@ -144,12 +144,6 @@ max-pooled down to **32 × 32 × 16** to match the model output.
 Loss function: **BCEWithLogitsLoss**.
 Augmentation: 72 cyclic phase shifts per asteroid, with matching voxel Z-rotations.
 
-#### Evaluation training
-
-<img width="2527" height="1314" alt="evaluation_Asteroid01" src="https://github.com/user-attachments/assets/787b2a9f-2d2c-4da2-94e8-c97fc7b98537" />
-<img width="2527" height="1314" alt="evaluation_Asteroid02" src="https://github.com/user-attachments/assets/56493b5b-941f-499a-a131-36494a567341" />
-<img width="2527" height="1314" alt="evaluation_Asteroid03" src="https://github.com/user-attachments/assets/90cdc6d9-6645-4528-8ec4-2ff02a9635b6" />
-
 #### Post-processing (prediction)
 
 ```
@@ -177,13 +171,9 @@ All outputs are written under `output/Asteroid0X/`.
 
 #### Evaluation output 
 
-<img width="2527" height="1314" alt="evaluation_Asteroid04" src="https://github.com/user-attachments/assets/800d46ea-d564-4b9e-ae2c-3f2037851e6a" />
 <img width="2527" height="1314" alt="evaluation_Asteroid05" src="https://github.com/user-attachments/assets/2ef9ff57-cc46-4f3d-93d2-9baf293fe4d4" />
-<img width="2527" height="1314" alt="evaluation_Asteroid06" src="https://github.com/user-attachments/assets/6cca53f5-6835-4849-a499-564101c72ff0" />
-<img width="2527" height="1314" alt="evaluation_Asteroid07" src="https://github.com/user-attachments/assets/8bb4891c-361e-4edb-bb86-5a00685a92f5" />
 <img width="2527" height="1314" alt="evaluation_Asteroid08" src="https://github.com/user-attachments/assets/6478358a-5abf-4161-b96b-de0b782eb519" />
 <img width="2527" height="1314" alt="evaluation_Asteroid09" src="https://github.com/user-attachments/assets/fd906973-2276-4cae-9b05-d1cdc4bd0ac7" />
-<img width="2527" height="1314" alt="evaluation_Asteroid010" src="https://github.com/user-attachments/assets/4d4fc157-4538-4b18-83f8-62f5207c8890" />
 
 --- 
 
@@ -207,6 +197,12 @@ The MATLAB code is available in `scaling_manually/asteroid04_convex`. The result
 From the light curve, we heuristic infer that Asteroid 6 would be a triangle (compare to Asteroid 2 that is a square). With a bit of luck (and some Googling), we found that Asteroid [2002NY14](https://damit.cuni.cz/projects/damit/asteroid_models/view/2307) matched our guess. After applying an appropriate scaling, the result appears to be consistent with our guess. The MATLAB code is available in `scaling_manually/asteroid06_luck`. The resulting reconstruction appears to be in good agreement with the target object (compare to Method 1): 
 
 <img width="2527" height="1314" alt="Asteroid06_evaluation" src="https://github.com/user-attachments/assets/bb6a2693-f1db-4fd0-a126-4439df12c576" />
+
+### Asteroid07: A Guess with Manual Scaling 
+
+The output of the neural network described above suggests that Asteroid 7 may be similar to Asteroid 3. It would likely be preferable to reconstruct Asteroid 7 by transformation from Asteroid 3. After applying an appropriate scaling, the result appears to be consistent with our guess. The MATLAB code is available in `scaling_manually/asteroid07_adjustment_CNN`. The resulting reconstruction appears to be in good agreement with the target object (compare to Method 1): 
+
+<img width="2527" height="1314" alt="Asteroid07_evaluation" src="https://github.com/user-attachments/assets/6157b25f-ee86-4481-b2a2-d32cf5fb424b" />
 
 
 ### Asteroid010: A Guess with Manual Scaling
