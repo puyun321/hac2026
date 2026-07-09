@@ -2,7 +2,7 @@
 
 This repository contains the results submitted by the team from Tamkang University, National Chengchi University, and National Taiwan University.
 
-**Team members:** Pu-Yun Kow, Pu-Zhao Kow, and Jenn-Nan Wang.
+**Team members:** [Pu-Yun Kow](https://puyun321.github.io/), [Pu-Zhao Kow](https://puzhaokow1993.github.io/homepage/), and [Jenn-Nan Wang](https://www.math.ntu.edu.tw/~jnwang/).
 
 
 > [!TIP] 
