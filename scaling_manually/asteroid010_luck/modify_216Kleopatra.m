@@ -20,7 +20,9 @@ R1 = [cosd(vartheta), 0, -sind(vartheta);
 
 Vnew = (R1 * R * TR.Points')';
 
+
 Vnew = Vnew/51; % scaling until z_min=-1 and z_max=1 
+Vnew(:,3) = Vnew(:,3) + 0.075*ones(length(Vnew(:,2)),1); 
 Vnew(:,2) = Vnew(:,2)*2.1; 
 Vnew(:,1:2) = Vnew(:,1:2)*3.9/2.78; 
 
