@@ -32,10 +32,12 @@ We also perform a consistency check to ensure that the rendered light curve is r
 <img width="2527" height="1314" alt="verification_asteroid2" src="https://github.com/user-attachments/assets/ea918be7-a4f2-440a-88b9-e01ed7473338" />
 <img width="2527" height="1314" alt="verification_asteroid3" src="https://github.com/user-attachments/assets/c5a33214-a256-48b3-8874-10d300d8ef88" />
 
+Since we are able to render light curves from 3D objects, we can reconstruct (or, more precisely, approximate) the objects using a Monte Carlo procedure. The basic idea is to iteratively modify our guess until the rendered light curves are sufficiently close to the observed ones.
 
----
+## Initial guess: Voxelization and Deep Learning-Based Reconstruction 
 
-## Method 1: Voxelization and Deep Learning-Based Reconstruction 
+However, there are far too many possible shapes to guess efficiently. Therefore, we first obtain an initial guess using a neural network.
+
 
 ### Requirements
 
@@ -169,16 +171,12 @@ All outputs are written under `output/Asteroid0X/`.
 | `prediction/cnn_asteroid.stl` | VoxelCNN corrected shape |
 | `prediction/cnn_shape_comparison.html` | Interactive 3D comparison: Physics vs VoxelCNN |
 
-#### Evaluation output 
-
-<img width="2527" height="1314" alt="evaluation_Asteroid08" src="https://github.com/user-attachments/assets/6478358a-5abf-4161-b96b-de0b782eb519" />
-
 
 --- 
 
-## Method 2: Heuristic guessing 
+## Final Reconstruction Results (`Asteroid04.stl`, `Asteroid05.stl`, ..., `Asteroid10.stl`)
 
-It is difficult to determine whether the voxelized objects have been reconstructed correctly. At least, Asteroids 5, 7, 8, and 9 still appear to have a chance of being reconstructed successfully. 
+Starting from this initial guess, we heuristically refine the object's shape. We emphasize that the reconstruction is still largely based on subjective judgment, and it is difficult to formulate a systematic procedure.
 
 > [!NOTE] 
 > The output of ConvexInv is provided in the `.obj` format, which can be readily converted to the `.stl` format using [Blender](https://www.blender.org/). 
@@ -187,27 +185,34 @@ It is difficult to determine whether the voxelized objects have been reconstruct
 
 The output of the neural network described above suggests that Asteroid 4 may be a convex object, it would likely be preferable to reconstruct them using an existing convex inversion method, such as ConvexInv, as mentioned above. However, even if the asteroid is convex, the reconstruction is unique only up to translation, rotation, and scaling, since we consider only the average light curve. Therefore, these transformations must be determined and applied manually. Fortunately, inspection of the ConvexInv output in [Blender](https://www.blender.org/) suggests that the reconstructed object is already properly centered. Therefore, only the rotation and scaling need to be determined manually.
 
-The MATLAB code is available in `scaling_manually/asteroid04_convex`. The resulting reconstruction appears to be in good agreement with the target object (compare to Method 1): 
+The MATLAB code is available in `scaling_manually/asteroid04_convex`. The resulting reconstruction appears to be in good agreement with the target object: 
 
 <img width="2527" height="1314" alt="Asteroid04_evaluation" src="https://github.com/user-attachments/assets/44df390f-6530-4ba0-96d5-a1c04c2dfcb7" />
 
 ### Asteroid05: ConvexInv with Manual Scaling 
 
-The output of the neural network described above suggests that Asteroid 5 may be a convex object, it would likely be preferable to reconstruct them using a similar method used for Asteroid 4. The MATLAB code is available in `scaling_manually/asteroid05_convex`. The resulting reconstruction appears to be in good agreement with the target object (compare to Method 1): 
+The output of the neural network described above suggests that Asteroid 5 may be a convex object, it would likely be preferable to reconstruct them using a similar method used for Asteroid 4. The MATLAB code is available in `scaling_manually/asteroid05_convex`. The resulting reconstruction appears to be in good agreement with the target object: 
 
 <img width="2527" height="1314" alt="Asteroid05_evaluation" src="https://github.com/user-attachments/assets/7b329679-83b0-455a-839c-a144d4d0fc5a" />
 
 ### Asteroid06: A Guess with Manual Scaling
 
-From the light curve, we heuristic infer that Asteroid 6 would be a triangle (compare to Asteroid 2 that is a square). With a bit of luck (and some Googling), we found that Asteroid [2002NY14](https://damit.cuni.cz/projects/damit/asteroid_models/view/2307) matched our guess. After applying an appropriate scaling, the result appears to be consistent with our guess. The MATLAB code is available in `scaling_manually/asteroid06_luck`. The resulting reconstruction appears to be in good agreement with the target object (compare to Method 1): 
+From the light curve, we heuristic infer that Asteroid 6 would be a triangle (compare to Asteroid 2 that is a square). With a bit of luck (and some Googling), we found that Asteroid [2002NY14](https://damit.cuni.cz/projects/damit/asteroid_models/view/2307) matched our guess. After applying an appropriate scaling, the result appears to be consistent with our guess. The MATLAB code is available in `scaling_manually/asteroid06_luck`. The resulting reconstruction appears to be in good agreement with the target object: 
 
 <img width="2527" height="1314" alt="Asteroid06_evaluation" src="https://github.com/user-attachments/assets/bb6a2693-f1db-4fd0-a126-4439df12c576" />
 
 ### Asteroid07: A Guess with Manual Scaling 
 
-The output of the neural network described above suggests that Asteroid 7 may be similar to Asteroid 3. It would likely be preferable to reconstruct Asteroid 7 by transformation from Asteroid 3. After applying an appropriate scaling, the result appears to be consistent with our guess. The MATLAB code is available in `scaling_manually/asteroid07_adjustment_CNN`. The resulting reconstruction appears to be in good agreement with the target object (compare to Method 1): 
+The output of the neural network described above suggests that Asteroid 7 may be similar to Asteroid 3. It would likely be preferable to reconstruct Asteroid 7 by transformation from Asteroid 3. After applying an appropriate scaling, the result appears to be consistent with our guess. The MATLAB code is available in `scaling_manually/asteroid07_adjustment_CNN`. The resulting reconstruction appears to be in good agreement with the target object: 
 
 <img width="2527" height="1314" alt="Asteroid07_evaluation" src="https://github.com/user-attachments/assets/6157b25f-ee86-4481-b2a2-d32cf5fb424b" />
+
+### Asteroid08: Direct construction 
+
+Note that the light curve of Asteroid 8 is nearly constant, suggesting that the object is close to an ellipsoid. Therefore, we directly construct an ellipsoid as an approximation. The MATLAB code is available in `scaling_manually/asteroid08_create_MATLAB`: 
+
+<img width="2527" height="1314" alt="Asteroid08_evaluation" src="https://github.com/user-attachments/assets/7645e1ce-df29-4dda-b8a7-1dcbfabda297" />
+
 
 ### Asteroid09: VoxelCNN
 
@@ -217,7 +222,7 @@ We believe that the output of the neural network described above gives a good ap
 
 ### Asteroid010: A Guess with Manual Scaling
 
-From the light curve and the cylinder base provided by the organizers, it seemed likely that the object had a long and thin shape. With a bit of luck (and some Googling), we found that Asteroid [216Kleopatra](https://damit.cuni.cz/projects/damit/asteroid_models/view/1826) matched our guess. After applying an appropriate scaling, the result appears to be consistent with our guess. The MATLAB code is available in `scaling_manually/asteroid010_luck`. The resulting reconstruction appears to be in good agreement with the target object (compare to Method 1): 
+From the light curve and the cylinder base provided by the organizers, it seemed likely that the object had a long and thin shape. With a bit of luck (and some Googling), we found that Asteroid [216Kleopatra](https://damit.cuni.cz/projects/damit/asteroid_models/view/1826) matched our guess. After applying an appropriate scaling, the result appears to be consistent with our guess. The MATLAB code is available in `scaling_manually/asteroid010_luck`. The resulting reconstruction appears to be in good agreement with the target object: 
 
 <img width="2527" height="1314" alt="Asteroid010_evaluation" src="https://github.com/user-attachments/assets/c92eb578-999f-40f0-a34c-8b871d5debe0" />
 
