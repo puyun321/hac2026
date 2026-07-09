@@ -177,7 +177,7 @@ Starting from this initial guess, we heuristically refine the object's shape. We
 > [!NOTE] 
 > The output of ConvexInv is provided in the `.obj` format, which can be readily converted to the `.stl` format using [Blender](https://www.blender.org/). 
 
-### Asteroid04: ConvexInv with Manual Scaling 
+### Asteroid04 
 
 The output of the neural network described above suggests that Asteroid 4 may be a convex object, it would likely be preferable to reconstruct them using an existing convex inversion method, such as ConvexInv, as mentioned above. However, even if the asteroid is convex, the reconstruction is unique only up to translation, rotation, and scaling, since we consider only the average light curve. Therefore, these transformations must be determined and applied manually. Fortunately, inspection of the ConvexInv output in [Blender](https://www.blender.org/) suggests that the reconstructed object is already properly centered. Therefore, only the rotation and scaling need to be determined manually.
 
@@ -185,38 +185,38 @@ The MATLAB code is available in `scaling_manually/asteroid04_convex`. The result
 
 <img width="2527" height="1314" alt="Asteroid04_evaluation" src="https://github.com/user-attachments/assets/44df390f-6530-4ba0-96d5-a1c04c2dfcb7" />
 
-### Asteroid05: ConvexInv with Manual Scaling 
+### Asteroid05 
 
 The output of the neural network described above suggests that Asteroid 5 may be a convex object, it would likely be preferable to reconstruct them using a similar method used for Asteroid 4. The MATLAB code is available in `scaling_manually/asteroid05_convex`. The resulting reconstruction appears to be in good agreement with the target object: 
 
 <img width="2527" height="1314" alt="Asteroid05_evaluation" src="https://github.com/user-attachments/assets/7b329679-83b0-455a-839c-a144d4d0fc5a" />
 
-### Asteroid06: A Guess with Manual Scaling
+### Asteroid06
 
 From the light curve, we heuristic infer that Asteroid 6 would be a triangle (compare to Asteroid 2 that is a square). With a bit of luck (and some Googling), we found that Asteroid [2002NY14](https://damit.cuni.cz/projects/damit/asteroid_models/view/2307) matched our guess. After applying an appropriate scaling, the result appears to be consistent with our guess. The MATLAB code is available in `scaling_manually/asteroid06_luck`. The resulting reconstruction appears to be in good agreement with the target object: 
 
 <img width="2527" height="1314" alt="Asteroid06_evaluation" src="https://github.com/user-attachments/assets/bb6a2693-f1db-4fd0-a126-4439df12c576" />
 
-### Asteroid07: A Guess with Manual Scaling 
+### Asteroid07 
 
 The output of the neural network described above suggests that Asteroid 7 may be similar to Asteroid 3. It would likely be preferable to reconstruct Asteroid 7 by transformation from Asteroid 3. After applying an appropriate scaling, the result appears to be consistent with our guess. The MATLAB code is available in `scaling_manually/asteroid07_adjustment_CNN`. The resulting reconstruction appears to be in good agreement with the target object: 
 
 <img width="2527" height="1314" alt="Asteroid07_evaluation" src="https://github.com/user-attachments/assets/6157b25f-ee86-4481-b2a2-d32cf5fb424b" />
 
-### Asteroid08: Direct construction 
+### Asteroid08 
 
 Note that the light curve of Asteroid 8 is nearly constant, suggesting that the object is close to an ellipsoid. Therefore, we directly construct an ellipsoid as an approximation. The MATLAB code is available in `scaling_manually/asteroid08_create_MATLAB`: 
 
 <img width="2527" height="1314" alt="Asteroid08_evaluation" src="https://github.com/user-attachments/assets/7645e1ce-df29-4dda-b8a7-1dcbfabda297" />
 
 
-### Asteroid09: VoxelCNN
+### Asteroid09
 
 We believe that the output of the neural network described above gives a good approximation. Therefore we directly use it as the outcome: 
 
 <img width="2527" height="1314" alt="evaluation_Asteroid09" src="https://github.com/user-attachments/assets/fd906973-2276-4cae-9b05-d1cdc4bd0ac7" />
 
-### Asteroid010: A Guess with Manual Scaling
+### Asteroid010
 
 From the light curve and the cylinder base provided by the organizers, it seemed likely that the object had a long and thin shape. With a bit of luck (and some Googling), we found that Asteroid [216Kleopatra](https://damit.cuni.cz/projects/damit/asteroid_models/view/1826) matched our guess. After applying an appropriate scaling, the result appears to be consistent with our guess. The MATLAB code is available in `scaling_manually/asteroid010_luck`. The resulting reconstruction appears to be in good agreement with the target object: 
 
