@@ -172,7 +172,7 @@ All outputs are written under `output/Asteroid0X/`.
 #### Evaluation output 
 
 <img width="2527" height="1314" alt="evaluation_Asteroid08" src="https://github.com/user-attachments/assets/6478358a-5abf-4161-b96b-de0b782eb519" />
-<img width="2527" height="1314" alt="evaluation_Asteroid09" src="https://github.com/user-attachments/assets/fd906973-2276-4cae-9b05-d1cdc4bd0ac7" />
+
 
 --- 
 
@@ -209,6 +209,11 @@ The output of the neural network described above suggests that Asteroid 7 may be
 
 <img width="2527" height="1314" alt="Asteroid07_evaluation" src="https://github.com/user-attachments/assets/6157b25f-ee86-4481-b2a2-d32cf5fb424b" />
 
+### Asteroid09: VoxelCNN
+
+We believe that the output of the neural network described above gives a good approximation. Therefore we directly use it as the outcome: 
+
+<img width="2527" height="1314" alt="evaluation_Asteroid09" src="https://github.com/user-attachments/assets/fd906973-2276-4cae-9b05-d1cdc4bd0ac7" />
 
 ### Asteroid010: A Guess with Manual Scaling
 
