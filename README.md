@@ -220,7 +220,8 @@ We believe that the output of the neural network described above gives a good ap
 
 From the light curve and the cylinder base provided by the organizers, it seemed likely that the object had a long and thin shape. With a bit of luck (and some Googling), we found that Asteroid [216Kleopatra](https://damit.cuni.cz/projects/damit/asteroid_models/view/1826) matched our guess. After applying an appropriate scaling, the result appears to be consistent with our guess. The MATLAB code is available in `scaling_manually/asteroid010_luck`. The resulting reconstruction appears to be in good agreement with the target object: 
 
-<img width="2527" height="1314" alt="Asteroid010_evaluation" src="https://github.com/user-attachments/assets/c92eb578-999f-40f0-a34c-8b871d5debe0" />
+<img width="2527" height="1314" alt="Asteroid010_evaluation" src="https://github.com/user-attachments/assets/7d61937a-67d1-451c-8bfe-ad923a191f19" />
+
 
 
 
