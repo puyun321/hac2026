@@ -87,8 +87,6 @@ python convexinv_pipeline.py 1 2 3
 ```
 
 
-
-
 We are now ready to train the model by running the following program:
 
 ```cmd
@@ -170,9 +168,7 @@ All outputs are written under `output/Asteroid0X/`.
 | `simulation/predicted_lightcurve.txt` | Forward-simulated lightcurve |
 | `prediction/cnn_asteroid.stl` | VoxelCNN corrected shape |
 | `prediction/cnn_shape_comparison.html` | Interactive 3D comparison: Physics vs VoxelCNN |
-
-
---- 
+ 
 
 ## Final Reconstruction Results (`Asteroid04.stl`, `Asteroid05.stl`, ..., `Asteroid10.stl`)
 
