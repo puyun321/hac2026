@@ -1,6 +1,6 @@
-# Helsinki Asteroid Challenge (HAC 2026) — Asteroid Shape Reconstruction
+# Helsinki Asteroid Challenge (HAC 2026): A Monte-Carlo method 
 
-This repository contains the results submitted by the team from Tamkang University, National Chengchi University, and National Taiwan University.
+This repository contains the results submitted to the [Helsinki Asteroid Challenge (HAC 2026)](https://fips.fi/data-challenges/helsinki-asteroid-challenge-2026/) by the team from Tamkang University, National Chengchi University, and National Taiwan University. 
 
 **Team members:** [Pu-Yun Kow](https://puyun321.github.io/), [Pu-Zhao Kow](https://puzhaokow1993.github.io/homepage/), and [Jenn-Nan Wang](https://www.math.ntu.edu.tw/~jnwang/).
 
