@@ -202,7 +202,14 @@ The MATLAB code is available in `scaling_manually/asteroid04_convex`. The result
 
 <img width="2527" height="1314" alt="Asteroid04_evaluation" src="https://github.com/user-attachments/assets/44df390f-6530-4ba0-96d5-a1c04c2dfcb7" />
 
-### Asteroid010: A Successful Guess with Manual Scaling
+### Asteroid06: A Guess with Manual Scaling
+
+From the light curve, we heuristic infer that Asteroid 6 would be a triangle (compare to Asteroid 2 that is a square). With a bit of luck (and some Googling), we found that Asteroid [2002NY14](https://damit.cuni.cz/projects/damit/asteroid_models/view/2307) matched our guess. After applying an appropriate scaling, the result appears to be consistent with our guess. The MATLAB code is available in `scaling_manually/asteroid06_luck`. The resulting reconstruction appears to be in good agreement with the target object (compare to Method 1): 
+
+<img width="2527" height="1314" alt="Asteroid06_evaluation" src="https://github.com/user-attachments/assets/bb6a2693-f1db-4fd0-a126-4439df12c576" />
+
+
+### Asteroid010: A Guess with Manual Scaling
 
 From the light curve and the cylinder base provided by the organizers, it seemed likely that the object had a long and thin shape. With a bit of luck (and some Googling), we found that Asteroid [216Kleopatra](https://damit.cuni.cz/projects/damit/asteroid_models/view/1826) matched our guess. After applying an appropriate scaling, the result appears to be consistent with our guess. The MATLAB code is available in `scaling_manually/asteroid010_luck`. The resulting reconstruction appears to be in good agreement with the target object (compare to Method 1): 
 
@@ -210,10 +217,6 @@ From the light curve and the cylinder base provided by the organizers, it seemed
 
 
 
---- 
 
-## Future work 
-
-At present, our reconstructions of Asteroid 6 is not yet entirely convincing. We hope to improve them in future work.
 
 
