@@ -171,7 +171,6 @@ All outputs are written under `output/Asteroid0X/`.
 
 #### Evaluation output 
 
-<img width="2527" height="1314" alt="evaluation_Asteroid05" src="https://github.com/user-attachments/assets/2ef9ff57-cc46-4f3d-93d2-9baf293fe4d4" />
 <img width="2527" height="1314" alt="evaluation_Asteroid08" src="https://github.com/user-attachments/assets/6478358a-5abf-4161-b96b-de0b782eb519" />
 <img width="2527" height="1314" alt="evaluation_Asteroid09" src="https://github.com/user-attachments/assets/fd906973-2276-4cae-9b05-d1cdc4bd0ac7" />
 
@@ -191,6 +190,12 @@ The output of the neural network described above suggests that Asteroid 4 may be
 The MATLAB code is available in `scaling_manually/asteroid04_convex`. The resulting reconstruction appears to be in good agreement with the target object (compare to Method 1): 
 
 <img width="2527" height="1314" alt="Asteroid04_evaluation" src="https://github.com/user-attachments/assets/44df390f-6530-4ba0-96d5-a1c04c2dfcb7" />
+
+### Asteroid05: ConvexInv with Manual Scaling 
+
+The output of the neural network described above suggests that Asteroid 5 may be a convex object, it would likely be preferable to reconstruct them using a similar method used for Asteroid 4. The MATLAB code is available in `scaling_manually/asteroid05_convex`. The resulting reconstruction appears to be in good agreement with the target object (compare to Method 1): 
+
+<img width="2527" height="1314" alt="Asteroid05_evaluation" src="https://github.com/user-attachments/assets/7b329679-83b0-455a-839c-a144d4d0fc5a" />
 
 ### Asteroid06: A Guess with Manual Scaling
 
